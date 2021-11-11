@@ -25,10 +25,10 @@ const Navigation = () => {
                         BiCycle24
                     </Typography>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 2, mx: 5 }}>
-                        <Link to="/appointment" style={{ textDecoration: 'none', color: 'white' }}><Button color="inherit">Home</Button></Link>
+                        <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}><Button color="inherit">Home</Button></Link>
 
 
-                        <Link to="/allProducts" style={{ textDecoration: 'none', color: 'white' }}><Button color="inherit">Products</Button></Link>
+                        <Link to="/products" style={{ textDecoration: 'none', color: 'white' }}><Button color="inherit">Products</Button></Link>
                         {
                             user?.email ?
 

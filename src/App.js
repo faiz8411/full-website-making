@@ -11,7 +11,9 @@ import AddService from './pages/AddService/AddService';
 import Login from './pages/Login/Login/Login';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Registration from './pages/Login/Registration/Registration';
-import AllProduct from './pages/AllProduct/AllProduct';
+import Products from './pages/Products/Products/Products';
+import Purchase from './pages/Home/Home/Purchase/Purchase';
+import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -30,9 +32,12 @@ function App() {
             <Route path="/addService">
               <AddService></AddService>
             </Route>
-            <Route path="/allProducts">
-              <AllProduct></AllProduct>
+            <Route exact path="/products">
+              <Products></Products>
             </Route>
+            <PrivateRoute path="/purchase/:productId">
+              <Purchase></Purchase>
+            </PrivateRoute>
             <Route exact path="/login">
               <Login></Login>
             </Route>

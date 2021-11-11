@@ -1,6 +1,7 @@
 import { Button, Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom'
 
 const Services = () => {
     const [products, setProducts] = useState([])
@@ -41,7 +42,13 @@ const Services = () => {
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
 
-                                        <Button variant="contained">purchase now</Button>
+                                        <Link style={{ textDecoration: 'none' }}
+                                            to={`/purchase/${product._id}`}
+                                        ><Button
+                                            variant="contained">
+                                                purchase now
+                                            </Button>
+                                        </Link>
                                     </Typography>
                                 </CardContent>
 

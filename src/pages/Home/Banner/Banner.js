@@ -37,7 +37,7 @@ const Banner = () => {
                             Traditional Sourcing Brought Online. Find Quality Products & Contact Verified Suppliers! Reduce Costs With Factory Direct Sourcing. Low MOQ, OEM/ODM Available. Source Now! Production Monitoring. Trade Assurance. Logistics Service. Most Popular.
 
                         </Typography>
-                        <NavLink to="/allProducts" style={{ textDecoration: 'none' }}><Button variant="contained" style={{ textDecoration: 'none' }}>Explore Your BiCycle</Button></NavLink>
+                        <NavLink to="/products" style={{ textDecoration: 'none' }}><Button variant="contained" style={{ textDecoration: 'none' }}>Explore Your BiCycle</Button></NavLink>
                     </Box>
 
 

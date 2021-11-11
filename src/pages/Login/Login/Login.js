@@ -21,7 +21,7 @@ const Login = () => {
         e.preventDefault()
     }
     const handleLoginSubmit = (e) => {
-        // loginUser(loginData.email, loginData.password, location, history)
+        loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault()
     }
     const handleGoogleSignIn = () => {
@@ -38,19 +38,19 @@ const Login = () => {
                         <form onSubmit={handleLoginSubmit}>
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="outlined-basic"
                                 label="User Name"
 
                                 name="email"
                                 onBlur={handleOnChange}
-                                variant="standard" />
+                                variant="outlined" />
                             <TextField
                                 sx={{ width: '75%', m: 1 }}
-                                id="standard-basic"
+                                id="outlined-basic"
                                 label="User Password"
                                 name="password"
                                 onBlur={handleOnChange}
-                                variant="standard"
+                                variant="outlined"
                                 type="password"
                             />
 
@@ -71,7 +71,7 @@ const Login = () => {
                             {isLoading && <CircularProgress color="success" />
                             }
                             {user?.email && <Alert severity="success">user created  successfully </Alert>}
-
+                            <br />
                             <Button onClick={handleGoogleSignIn} variant="contained" style={{ color: 'success' }}>google sign in</Button>
                         </form>
                     </Grid>

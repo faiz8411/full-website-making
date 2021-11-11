@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import useAuth from '../../../hooks/useAuth';
-import { CircularProgress } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
 
 const Registration = () => {
     const [loginData, SetLoginData] = useState({})
@@ -96,7 +96,7 @@ const Registration = () => {
                             </form>}
                         {isLoading && <CircularProgress color="success" />
                         }
-
+                        {user?.email && <Alert severity="success">congrats!! user created  successfully </Alert>}
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <img src="" style={{ width: '100%' }} alt="" />

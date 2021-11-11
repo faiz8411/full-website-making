@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged, getIdToken, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { useEffect } from "react";
 import initializeAuthentication from "../pages/Login/Firebase/firebase.init";
 initializeAuthentication()
@@ -76,11 +76,11 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
-                getIdToken(user)
-                    .then(idToken => {
-                        // setToken(idToken)
-                        console.log(idToken)
-                    })
+                // getIdToken(user)
+                // .then(idToken => {
+                // setToken(idToken)
+                // console.log(idToken)
+                // })
             } else {
                 setUser({})
             }
