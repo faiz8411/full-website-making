@@ -12,14 +12,24 @@ const useFirebase = () => {
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
-    const registerUser = (email, name, password, history) => {
+    const registerUser = (email, password, name, history) => {
         setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
-                // const user = userCredential.user;
                 const newUser = { email, displayName: name }
                 setUser(newUser)
+                saveToDb(email, name)
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                }).then(() => {
+
+                }).catch((error) => {
+
+                });
+                history.replace('/')
+                // Signed in 
+                // const user = userCredential.user;
+
 
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -30,7 +40,7 @@ const useFirebase = () => {
                     // An error occurred
                     // ...
                 });
-                history.replace('/')
+
                 // ...
             })
             .catch((error) => {
@@ -100,6 +110,16 @@ const useFirebase = () => {
         })
             .finally(() => setIsLoading(false));
 
+    }
+    const saveToDb = (email, displayName) => {
+        const user = { email, displayName }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
     }
 
 

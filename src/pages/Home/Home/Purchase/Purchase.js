@@ -15,38 +15,53 @@ const Purchase = () => {
         watch,
         formState: { errors },
     } = useForm();
+    const onSubmit = (data) => {
+        alert('your order successfully added in my order')
+        data.status = "pending"
+        fetch("http://localhost:5000/confirmOrder", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
+        console.log(data);
+
+
+
+    }
+
+
     useEffect(() => {
         fetch(`http://localhost:5000/singleProduct/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])
-    console.log(product)
-    const onSubmit = (data) => {
-        console.log(data)
-    }
+    // console.log(product)
+
     return (
         <Container>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
                     <Typography>purchase</Typography>
-                    <form onSubmit={handleSubmit(onSubmit)} style={{ border: '1px solid gray', height: 300, m: 3 }}>
+                    <form onSubmit={handleSubmit(onSubmit)} style={{ border: 0, height: 300, m: 3 }}>
                         <input
-                            style={{ width: '50%', border: '2px solid green', }}
+                            style={{ width: '50%', border: '2px solid green', m: 1 }}
                             {...register("name")}
-                            placeholder="Name"
-                            type="name"
-                            defaultValue={product.name}
+                            placeholder="write service name"
 
+                            defaultValue={product?.name}
+
+                            required
+                        // className="p-2 m-2 w-100"
                         />
                         <br />
 
                         <input
-                            style={{ width: '50%', border: '2px solid green' }}
-                            {...register("description")}
-                            // placeholder="Description"
+                            style={{ width: '50%', border: '2px solid green', m: 1 }}
+                            {...register("email")}
                             defaultValue={user.email}
-                            type="email"
-
+                            className="p-2 m-2 w-100"
                         />
                         <br />
                         <input
@@ -66,14 +81,14 @@ const Purchase = () => {
 
                         />
                         <br />
-                        <input
+                        {/* <input
                             style={{ width: '50%', border: '2px solid green', m: 2 }}
                             {...register("price", { required: true })}
                             placeholder="Price"
                             type="date"
 
 
-                        />
+                        /> */}
                         <br />
 
 
@@ -87,14 +102,15 @@ const Purchase = () => {
                         />
                     </form>
                 </Grid>
-                <Grid item xs={12} md={6} style={{ border: '1 px solid gray' }}>
+                <Grid item xs={12} md={6} sx={{ border: 0 }}>
                     <Grid>
 
                         <img style={{ width: '50%' }} src={product.image} alt="" />
                         <Typography>
                             {product.name}
                         </Typography>
-                        <Typography>
+                        <Typography
+                            style={{ color: 'green' }}>
                             Price: {product.price}$
                         </Typography>
                         <Typography>

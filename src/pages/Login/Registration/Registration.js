@@ -28,7 +28,7 @@ const Registration = () => {
         if (loginData.password !== loginData.password2) {
             alert('password did not macth')
         }
-        registerUser(loginData.email, loginData.name, loginData.password, history)
+        registerUser(loginData.email, loginData.password, loginData.name, history)
         e.preventDefault()
     }
     return (
@@ -77,7 +77,7 @@ const Registration = () => {
                                     variant="standard"
                                     type="password"
                                 />
-
+                                <br />
                                 <Button
                                     type="submit"
                                     sx={{ width: '75%', m: 1 }}
@@ -85,6 +85,7 @@ const Registration = () => {
                                     Register
 
                                 </Button>
+                                <br />
                                 <NavLink to="/login"
 
                                     style={{ textDecoration: 'none' }}

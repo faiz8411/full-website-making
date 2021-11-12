@@ -30,15 +30,28 @@ const Navigation = () => {
 
                         <Link to="/products" style={{ textDecoration: 'none', color: 'white' }}><Button color="inherit">Products</Button></Link>
                         {
-                            user?.email ?
+                            user?.email && <NavLink to="/dashboard" style={{ textDecoration: 'none', color: 'white' }}>
+                                <Button color="inherit">Dashboard</Button>
+                            </NavLink>
+                        }
 
+                        {
+                            user?.email && <NavLink to="/orders" style={{ textDecoration: 'none', color: 'white' }}>
+                                <Button color="inherit">Orders</Button>
+                            </NavLink>
+                        }
+                        {user?.email ?
+
+
+                            <NavLink to="/" style={{ textDecoration: 'none', color: 'white' }}>
                                 <Button onClick={logout} color="inherit">Logout</Button>
+                            </NavLink>
 
 
-                                :
-                                <NavLink to="/login" style={{ textDecoration: 'none', color: 'white' }}>
-                                    <Button color="inherit">Login</Button>
-                                </NavLink>
+                            :
+                            <NavLink to="/login" style={{ textDecoration: 'none', color: 'white' }}>
+                                <Button color="inherit">Login</Button>
+                            </NavLink>
                         }
                     </Typography>
                 </Toolbar>
