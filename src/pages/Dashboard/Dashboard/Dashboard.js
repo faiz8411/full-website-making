@@ -25,10 +25,12 @@ import {
 } from "react-router-dom";
 import Admin from '../Admin/Admin';
 import Payment from '../Payment/Payment';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
+    const { user, logout } = useAuth()
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -103,7 +105,7 @@ function Dashboard(props) {
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <FaceRounded sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <Link to="/home" style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="LOGOUT" /></Link>
+                    <Link to="/home" style={{ textDecoration: 'none' }}> <ListItemText onClick={logout} style={{ color: 'white' }} primary="LOGOUT" /></Link>
                 </ListItem>
 
             </List>
