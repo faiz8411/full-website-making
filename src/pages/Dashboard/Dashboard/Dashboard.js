@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -15,15 +14,24 @@ import { Home, RateReviewOutlined, PaymentOutlined, ShoppingBasket, FaceRounded 
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { NavLink } from 'react-router-dom';
-import { Paper, Table, TextField } from '@mui/material';
 import ManageOrders from '../ManageOrder/ManageOrders';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    useRouteMatch
+} from "react-router-dom";
+import Admin from '../Admin/Admin';
+import Payment from '../Payment/Payment';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    let { path, url } = useRouteMatch();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -40,7 +48,7 @@ function Dashboard(props) {
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <Home sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <NavLink to="/home" style={{ textDecoration: 'none' }}><ListItemText style={{ color: 'white' }} primary="Home" /></NavLink>
+                    <Link to="/home" style={{ textDecoration: 'none' }}><ListItemText style={{ color: 'white' }} primary="HOME" /></Link>
                 </ListItem>
 
             </List>
@@ -51,7 +59,18 @@ function Dashboard(props) {
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <ShoppingBasket sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <ListItemText style={{ color: 'white' }} primary="manage orders" />
+                    <Link to={`${url}`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="ORDERS" /></Link>
+                </ListItem>
+
+            </List>
+            <List>
+
+                <ListItem button sx={{ backgroundColor: 'green' }}>
+                    <ListItemIcon>
+                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                        <ShoppingBasket sx={{ fontSize: 30, }} />
+                    </ListItemIcon>
+                    <Link to={`${url}/admin`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="ADMIN" /></Link>
                 </ListItem>
 
             </List>
@@ -62,7 +81,7 @@ function Dashboard(props) {
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <PaymentOutlined sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <ListItemText style={{ color: 'white' }} primary="Pay" />
+                    <Link to={`${url}/payment`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="payment" /></Link>
                 </ListItem>
 
             </List>
@@ -73,7 +92,7 @@ function Dashboard(props) {
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <RateReviewOutlined sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <ListItemText style={{ color: 'white' }} primary="review" />
+                    <Link to="/review" style={{ textDecoration: 'none' }}><ListItemText style={{ color: 'white' }} primary="REVIEW" /></Link>
                 </ListItem>
 
             </List>
@@ -84,7 +103,7 @@ function Dashboard(props) {
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <FaceRounded sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <ListItemText style={{ color: 'white' }} primary="logout" />
+                    <Link to="/home" style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="LOGOUT" /></Link>
                 </ListItem>
 
             </List>
@@ -158,9 +177,20 @@ function Dashboard(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
+                <Switch>
+                    <Route exact path={path}>
+                        <ManageOrders></ManageOrders>
+                    </Route>
+                    <Route path={`${path}/admin`}>
+                        <Admin></Admin>
+                    </Route>
+                    <Route path={`${path}/payment`}>
+                        <Payment></Payment>
+                    </Route>
+                </Switch>
 
                 <Typography paragraph>
-                    <ManageOrders></ManageOrders>
+
                 </Typography>
             </Box>
         </Box>

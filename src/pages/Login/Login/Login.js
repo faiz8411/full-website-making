@@ -70,7 +70,7 @@ const Login = () => {
                             </NavLink>
                             {isLoading && <CircularProgress color="success" />
                             }
-                            {user?.email && <Alert severity="success">user created  successfully </Alert>}
+                            {user?.email && <Alert severity="success">Login successfully </Alert>}
                             <br />
                             <Button onClick={handleGoogleSignIn} variant="contained" style={{ color: 'success' }}>google sign in</Button>
                         </form>
