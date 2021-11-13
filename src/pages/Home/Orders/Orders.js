@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import { Button, Card, CardContent, CardMedia, Container, Grid, Link, Typography } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 

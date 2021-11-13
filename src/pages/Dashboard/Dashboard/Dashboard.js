@@ -16,11 +16,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ManageOrders from '../ManageOrder/ManageOrders';
 import {
-    BrowserRouter as Router,
+
     Switch,
     Route,
     Link,
-    useParams,
+
     useRouteMatch
 } from "react-router-dom";
 import Admin from '../Admin/Admin';
@@ -33,7 +33,7 @@ import Review from './Review/Review';
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { user, logout, admin } = useAuth()
+    const { logout, admin } = useAuth()
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -46,9 +46,9 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <List>
+            <List style={{ backgroundColor: '#F92477 ' }}>
 
-                <ListItem button sx={{ backgroundColor: 'green' }}>
+                <ListItem button sx={{ backgroundColor: '#F92477 ' }}>
                     <ListItemIcon>
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <Home sx={{ fontSize: 30, }} />
@@ -57,9 +57,9 @@ function Dashboard(props) {
                 </ListItem>
 
             </List>
-            <List>
+            <List style={{ backgroundColor: '#F92477 ' }}>
 
-                <ListItem button sx={{ backgroundColor: 'green' }}>
+                <ListItem button sx={{ backgroundColor: '#F92477 ' }}>
                     <ListItemIcon>
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <ShoppingBasket sx={{ fontSize: 30, }} />
@@ -68,55 +68,55 @@ function Dashboard(props) {
                 </ListItem>
 
             </List>
-            <List>
+            <List style={{ backgroundColor: '#F92477 ' }}>
 
-                {admin && <ListItem button sx={{ backgroundColor: 'green' }}>
+                {admin && <ListItem button sx={{ backgroundColor: '#F92477 ' }}>
                     <ListItemIcon>
-                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+
                         <ShoppingBasket sx={{ fontSize: 30, }} />
                     </ListItemIcon>
                     <Link to={`${url}/admin`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="ADMIN" /></Link>
                 </ListItem>}
 
             </List>
-            <List>
+            <List style={{ backgroundColor: '#F92477 ' }}>
 
-                {admin && <ListItem button sx={{ backgroundColor: 'green' }}>
+                {admin && <ListItem button sx={{ backgroundColor: '#F92477 ' }}>
                     <ListItemIcon>
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <ShoppingBasket sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <Link to={`${url}/manageProduct`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="ADD PRODUCTS" /></Link>
+                    <Link to={`${url}/manageProduct`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="MANAGE ORDERS " /></Link>
                 </ListItem>}
 
             </List>
-            <List>
+            <List style={{ backgroundColor: '#F92477 ' }}>
 
-                <ListItem button sx={{ backgroundColor: 'gray' }}>
+                <ListItem button sx={{ backgroundColor: '#F92477 ' }}>
                     <ListItemIcon>
-                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+
                         <PaymentOutlined sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <Link to={`${url}/payment`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="payment" /></Link>
+                    <Link to={`${url}/payment`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="PAY" /></Link>
                 </ListItem>
 
             </List>
-            <List>
+            <List style={{ backgroundColor: '#F92477 ' }}>
 
-                <ListItem button sx={{ backgroundColor: 'green' }}>
+                <ListItem button sx={{ backgroundColor: '#F92477' }}>
                     <ListItemIcon>
-                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+
                         <RateReviewOutlined sx={{ fontSize: 30, }} />
                     </ListItemIcon>
                     <Link to={`${url}/review`} style={{ textDecoration: 'none' }}><ListItemText style={{ color: 'white' }} primary="REVIEW" /></Link>
                 </ListItem>
 
             </List>
-            <List>
+            <List style={{ backgroundColor: '#F92477 ' }}>
 
-                <ListItem button sx={{ backgroundColor: 'green' }}>
+                <ListItem button sx={{ backgroundColor: '#F92477 ' }}>
                     <ListItemIcon>
-                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+
                         <FaceRounded sx={{ fontSize: 30, }} />
                     </ListItemIcon>
                     <Link to="/home" style={{ textDecoration: 'none' }}> <ListItemText onClick={logout} style={{ color: 'white' }} primary="LOGOUT" /></Link>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import AddService from '../../../AddService/AddService';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import useAuth from '../../../../hooks/useAuth';
 import { Button } from '@mui/material';
-// import AddService from './pages/AddService/AddService';
+import TextField from '@mui/material/TextField';
 
 
 const ManageProducts = () => {
@@ -22,12 +21,27 @@ const ManageProducts = () => {
     const [status, setStatus] = useState("");
     const [orderId, setOrderId] = useState("");
 
+    const handleStatus = e => {
+        setStatus(e.target.value)
+    }
+    console.log(status)
+
     console.log(status);
     useEffect(() => {
         fetch(`http://localhost:5000/allOrders`)
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, []);
+
+    const handleUpdate = (id) => {
+        fetch(`http://localhost:5000/updateStatus/${id}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ status }),
+        });
+
+        console.log(id);
+    };
 
     return (
         <div>
@@ -57,8 +71,9 @@ const ManageProducts = () => {
                                 </TableCell>
                                 <TableCell align="right">{pd?.email}</TableCell>
                                 <TableCell align="right">{pd.price}$</TableCell>
-                                <TableCell align="right">{pd.status}</TableCell>
-                                <TableCell align="right"><Button variant="text">update</Button></TableCell>
+                                <TableCell align="right"><TextField onChange={handleStatus} defaultValue={pd.status} variant="outlined" />
+                                </TableCell>
+                                <TableCell onClick={() => handleUpdate(pd._id)} align="right"><Button variant="text">update</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

@@ -1,8 +1,6 @@
-import { Card, CardContent, CardMedia, Container, Grid, Link, Paper, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Container, Grid, Paper, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
+
 
 
 const AllReview = () => {
@@ -15,16 +13,16 @@ const AllReview = () => {
     return (
         <div>
             <Container m={5} p={5} sx={{ mt: 5 }}>
-                <Typography>top castomer Review</Typography>
+                <Typography variant="h5" style={{ color: '#C70039', fontWeight: 600, textAlign: 'left' }}> CUSTOMERS REVIEW:</Typography>
                 <Grid container spacing={3}>
                     {
                         review.map(pd => <Grid item xs={12} sm={6} md={4}>
-                            <Paper sx={{ p: 2, textAlign: 'center' }} variant="outlined">
-                                <Typography variant="h5" color="#19D3AE">customer name:{pd.name}</Typography>
+                            <Paper sx={{ p: 2, textAlign: 'left' }} variant="outlined">
+                                <Typography style={{ fontWeight: 500 }} variant="h6" color="#C70039 " >customer name:{pd.name}</Typography>
 
-                                <Typography variant="subtitle" sx={{ my: 2 }} >customer email:{pd.email} </Typography>
+                                <Typography style={{ fontWeight: 500, color: 'black', my: 2 }} variant="subtitle" sx={{ my: 2 }} >customer email:{pd.email} </Typography>
                                 <br />
-                                <Typography variant="subtitle" sx={{ my: 2, color: 'green' }} >customer review:{pd.review} </Typography>
+                                <Typography style={{ fontWeight: 500, fontSize: 13 }} variant="subtitle" sx={{ my: 2, color: 'gray' }} >customer review:{pd.review} </Typography>
 
                             </Paper>
                         </Grid>)

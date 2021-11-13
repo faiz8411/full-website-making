@@ -1,5 +1,4 @@
 import { Container, Grid, TextField, Typography } from '@mui/material';
-import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
@@ -41,11 +40,11 @@ const Purchase = () => {
 
     return (
         <Container>
-            <Grid container spacing={2}>
+            <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                     <Typography>purchase</Typography>
                     <form onSubmit={handleSubmit(onSubmit)} style={{ border: 0, height: 300, m: 3 }}>
-                        <input
+                        {product?.name && <input
                             style={{ width: '50%', border: '2px solid green', m: 1 }}
                             {...register("name")}
                             placeholder="write service name"
@@ -54,15 +53,15 @@ const Purchase = () => {
 
                             required
                         // className="p-2 m-2 w-100"
-                        />
+                        />}
                         <br />
 
-                        <input
+                        {user?.email && <input
                             style={{ width: '50%', border: '2px solid green', m: 1 }}
                             {...register("email")}
                             defaultValue={user.email}
                             className="p-2 m-2 w-100"
-                        />
+                        />}
                         <br />
                         <input
                             style={{ width: '50%', border: '2px solid green', m: 1 }}
@@ -81,15 +80,7 @@ const Purchase = () => {
 
                         />
                         <br />
-                        {/* <input
-                            style={{ width: '50%', border: '2px solid green', m: 2 }}
-                            {...register("price", { required: true })}
-                            placeholder="Price"
-                            type="date"
 
-
-                        /> */}
-                        <br />
 
 
 

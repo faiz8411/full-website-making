@@ -10,6 +10,7 @@ const AddService = () => {
         handleSubmit,
         watch,
         formState: { errors },
+        reset
     } = useForm();
     const onSubmit = (data) => {
         fetch("http://localhost:5000/addServices", {
@@ -20,6 +21,8 @@ const AddService = () => {
             .then((res) => res.json())
             .then((result) => console.log(result));
         console.log(data);
+
+        reset()
     };
     return (
         <div>

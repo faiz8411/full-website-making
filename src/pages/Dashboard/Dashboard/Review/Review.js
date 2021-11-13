@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../../hooks/useAuth';
@@ -17,7 +16,7 @@ const Review = () => {
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
-            .then((result) => console.log(result));
+            .then((result) => setReview(result));
         console.log(data);
         reset()
     };
@@ -33,7 +32,7 @@ const Review = () => {
                         {...register("email")}
 
                         defaultValue={user.email}
-                    // className="p-2 m-2 w-100 input-field"
+
                     />}
                     <br />
                     <Typography>user name</Typography>
@@ -44,7 +43,7 @@ const Review = () => {
                             placeholder="Name"
                             defaultValue={user.displayName
                             }
-                        // className="p-2 m-2 w-100 input-field"
+
                         />
                     }
                 </Grid>

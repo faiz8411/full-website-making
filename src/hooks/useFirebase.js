@@ -76,7 +76,7 @@ const useFirebase = () => {
                 saveToDb(user.email, user.displayName, 'PUT')
                 const destination = location?.state?.from || '/';
                 history.replace(destination)
-                // setUser(user)
+                setUser(user)
             }).catch((error) => {
                 setUser({})
             })
@@ -88,11 +88,7 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
-                // getIdToken(user)
-                // .then(idToken => {
-                // setToken(idToken)
-                // console.log(idToken)
-                // })
+
             } else {
                 setUser({})
             }

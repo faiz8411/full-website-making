@@ -4,6 +4,8 @@ import Navigation from '../../Shared/Navigation/Navigation';
 import AllReview from '../AllReview/AllReview';
 import Banner from '../Banner/Banner';
 import Services from '../Services/Services';
+import Text from '../Text/Text';
+import About from './About/About';
 
 const Home = () => {
     return (
@@ -13,6 +15,8 @@ const Home = () => {
             <Banner></Banner>
             <AllReview></AllReview>
             <Services></Services>
+            {/* <Text></Text> */}
+            <About></About>
 
 
 

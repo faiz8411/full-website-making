@@ -52,7 +52,7 @@ const Navigation = () => {
                             <MenuIcon />
                         </IconButton>
 
-                        {/* <img style={{ width: '60px' }} src="https://i.ibb.co/Br04Kf1/images-2-modified.png" alt="" /> */}
+                        <img style={{ width: '60px' }} src="https://i.ibb.co/Br04Kf1/images-2-modified.png" alt="" />
                         <Typography className={navLogo} variant="h6" component="div" sx={{ flexGrow: 0, mx: 5 }}>
                             BiCycle24
                         </Typography>

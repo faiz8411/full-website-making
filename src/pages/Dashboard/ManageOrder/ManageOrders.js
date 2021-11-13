@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 
 
 import useAuth from '../../../hooks/useAuth';
-import { Button } from '@mui/material';
 
 
 const ManageOrders = () => {
@@ -32,8 +31,7 @@ const ManageOrders = () => {
                             <TableCell>product Name</TableCell>
                             <TableCell align="right" style={{ backgroundColor: 'yellow', borderRadius: 10 }}>user email</TableCell>
                             <TableCell align="right">price</TableCell>
-                            <TableCell align="right">status</TableCell>
-                            <TableCell align="right">action</TableCell>
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -49,8 +47,8 @@ const ManageOrders = () => {
                                 </TableCell>
                                 <TableCell align="right">{user.email}</TableCell>
                                 <TableCell align="right">{pd.price}$</TableCell>
-                                <TableCell align="right">{pd.status}</TableCell>
-                                <TableCell align="right"><Button variant="text">update</Button></TableCell>
+
+
                             </TableRow>
                         ))}
                     </TableBody>

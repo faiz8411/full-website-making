@@ -12,9 +12,9 @@ const Services = () => {
     }, [])
     return (
         <Container sx={{ mx: 3, mt: 5 }} marginTop={10} marginBottom={10}>
-            <Box sx={{ flexGrow: 1, mb: 5 }}>
-                <Typography variant="h4" style={{ textDecoration: 'dotted' }}>
-                    OUR TOP SELLING PRODUCT
+            <Box sx={{ flexGrow: 1, mb: 5 }} marginTop={10} marginBottom={10}>
+                <Typography variant="h4" style={{ color: '#900C3F ', fontWeight: 600, textAlign: 'left' }}>
+                    OUR HOT SALE
                 </Typography>
 
                 <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -29,14 +29,16 @@ const Services = () => {
 
                                     />
                                 </Box>
+
                                 <CardContent>
 
 
                                     <Typography variant="h5" component="div">
                                         {product.name}
                                     </Typography>
+
                                     <Typography>
-                                        {product.price}$
+                                        price: {product.price}$
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
 
@@ -49,6 +51,7 @@ const Services = () => {
                                         </Link>
                                     </Typography>
                                 </CardContent>
+
 
                             </Card>
                         </Grid>)

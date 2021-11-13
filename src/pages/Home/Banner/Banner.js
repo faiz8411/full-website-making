@@ -1,5 +1,5 @@
 import { Button, Container, Grid, Typography } from '@mui/material';
-import { Box, height } from '@mui/system';
+import { Box } from '@mui/system';
 import React from 'react';
 import './Banner.css'
 import bg from '../../../banner-Images/i-love-cycling-banner-183054174.jpg'
