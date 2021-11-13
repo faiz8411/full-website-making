@@ -28,13 +28,13 @@ const ManageProducts = () => {
 
     console.log(status);
     useEffect(() => {
-        fetch(`http://localhost:5000/allOrders`)
+        fetch(`https://stormy-wave-57583.herokuapp.com/allOrders`)
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, []);
 
     const handleUpdate = (id) => {
-        fetch(`http://localhost:5000/updateStatus/${id}`, {
+        fetch(`https://stormy-wave-57583.herokuapp.com/updateStatus/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ status }),

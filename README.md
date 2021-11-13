@@ -1,9 +1,15 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Bicycle website](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Bicycle website](https://bicycle-website.web.app/).
 
-## Available Scripts
+## our company main service
 
+Road Bikes
+Mountain Bikes
+Trekking Bikes
+Fitness Bikes
+Cross Bikes
+Children's Bikes
 In the project directory, you can run:
 
 ### `npm start`

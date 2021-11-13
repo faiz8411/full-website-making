@@ -11,13 +11,13 @@ const Purchase = () => {
     const {
         register,
         handleSubmit,
-        watch,
+
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
         alert('your order successfully added in my order')
         data.status = "pending"
-        fetch("http://localhost:5000/confirmOrder", {
+        fetch("https://stormy-wave-57583.herokuapp.com/confirmOrder", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
@@ -32,7 +32,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${productId}`)
+        fetch(`https://stormy-wave-57583.herokuapp.com/singleProduct/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])

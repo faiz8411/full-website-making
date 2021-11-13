@@ -10,7 +10,7 @@ const Admin = () => {
     }
     const handleAdminSubmit = e => {
         const user = { email }
-        fetch('http://localhost:5000/users', {
+        fetch('https://stormy-wave-57583.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 // 'authorization': `Bearer${token}`,

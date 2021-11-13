@@ -10,7 +10,7 @@ const AllProduct = () => {
     const [products, setProducts] = useState([])
     const { productId } = useParams()
     useEffect(() => {
-        fetch('http://localhost:5000/Products')
+        fetch('https://stormy-wave-57583.herokuapp.com/Products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

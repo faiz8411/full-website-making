@@ -16,7 +16,7 @@ const ManageOrders = () => {
     const { user } = useAuth()
     const [manageOrder, setManageOrder] = useState([])
     useEffect(() => {
-        const url = `http://localhost:5000/myOrders?email=${user.email}`
+        const url = `https://stormy-wave-57583.herokuapp.com/myOrders?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setManageOrder(data))
@@ -28,9 +28,9 @@ const ManageOrders = () => {
                 <Table sx={{ minWidth: 350 }} aria-label="orders table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>product Name</TableCell>
+                            <TableCell style={{ backgroundColor: 'yellow', borderRadius: 10 }}>product Name</TableCell>
                             <TableCell align="right" style={{ backgroundColor: 'yellow', borderRadius: 10 }}>user email</TableCell>
-                            <TableCell align="right">price</TableCell>
+                            <TableCell align="right" style={{ backgroundColor: 'yellow', borderRadius: 10 }}>price</TableCell>
 
                         </TableRow>
                     </TableHead>

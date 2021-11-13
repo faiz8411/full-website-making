@@ -9,14 +9,14 @@ const Orders = () => {
     const [control, setControl] = useState(false)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders?email=${user.email}`)
+        fetch(`https://stormy-wave-57583.herokuapp.com/myOrders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [user.email])
 
     const handleDelete = (id) => {
         alert('you want to delete')
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://stormy-wave-57583.herokuapp.com/deleteOrder/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

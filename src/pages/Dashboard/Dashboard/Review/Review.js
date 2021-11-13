@@ -10,7 +10,7 @@ const Review = () => {
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        fetch("http://localhost:5000/addReviews", {
+        fetch("https://stormy-wave-57583.herokuapp.com/addReviews", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
