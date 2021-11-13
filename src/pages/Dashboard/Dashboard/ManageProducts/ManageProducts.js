@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import AddService from '../../../AddService/AddService';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,24 +9,30 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-
-
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../../hooks/useAuth';
 import { Button } from '@mui/material';
+// import AddService from './pages/AddService/AddService';
 
 
-const ManageOrders = () => {
+const ManageProducts = () => {
     const { user } = useAuth()
-    const [manageOrder, setManageOrder] = useState([])
+    const [orders, setOrders] = useState([]);
+    const { register, handleSubmit } = useForm();
+
+    const [status, setStatus] = useState("");
+    const [orderId, setOrderId] = useState("");
+
+    console.log(status);
     useEffect(() => {
-        const url = `http://localhost:5000/myOrders?email=${user.email}`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setManageOrder(data))
-    }, [user.email])
+        fetch(`http://localhost:5000/allOrders`)
+            .then((res) => res.json())
+            .then((data) => setOrders(data));
+    }, []);
+
     return (
         <div>
-            {/* <h2>manage orders:{manageOrder.length}</h2> */}
+            {/* <AddService></AddService> */}
+            <h2>all order:{orders.length}</h2>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 350 }} aria-label="orders table">
                     <TableHead>
@@ -37,7 +45,7 @@ const ManageOrders = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {manageOrder.map((pd) => (
+                        {orders.map((pd) => (
                             <TableRow
                                 key={pd._id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -47,7 +55,7 @@ const ManageOrders = () => {
 
 
                                 </TableCell>
-                                <TableCell align="right">{user.email}</TableCell>
+                                <TableCell align="right">{pd?.email}</TableCell>
                                 <TableCell align="right">{pd.price}$</TableCell>
                                 <TableCell align="right">{pd.status}</TableCell>
                                 <TableCell align="right"><Button variant="text">update</Button></TableCell>
@@ -57,7 +65,9 @@ const ManageOrders = () => {
                 </Table>
             </TableContainer>
         </div>
+
+
     );
 };
 
-export default ManageOrders;
+export default ManageProducts;

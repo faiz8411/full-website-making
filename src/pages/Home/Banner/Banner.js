@@ -22,8 +22,8 @@ const verticleCenter = {
 
 const Banner = () => {
     return (
-        <Container style={bannerBg} sx={{ flexGrow: 1, mb: 5 }}>
-            <Grid container spacing={2}>
+        <Container style={bannerBg} sx={{ flexGrow: 1, my: 0 }}>
+            <Grid container spacing={1}>
                 <Grid xs={12} md={7}>
 
                 </Grid>

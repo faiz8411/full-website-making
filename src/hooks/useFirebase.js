@@ -8,6 +8,7 @@ initializeAuthentication()
 const useFirebase = () => {
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    const [admin, setAdmin] = useState(false)
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -56,7 +57,7 @@ const useFirebase = () => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const destination = location?.state?.from || '/home';
+                const destination = location?.state?.from || '/';
                 history.replace(destination)
 
             })
@@ -73,7 +74,7 @@ const useFirebase = () => {
 
                 const user = result.user;
                 saveToDb(user.email, user.displayName, 'PUT')
-                const destination = location?.state?.from || '/home';
+                const destination = location?.state?.from || '/';
                 history.replace(destination)
                 // setUser(user)
             }).catch((error) => {
@@ -101,7 +102,11 @@ const useFirebase = () => {
 
     }, [])
 
-
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     const logout = () => {
         signOut(auth).then(() => {
@@ -127,7 +132,7 @@ const useFirebase = () => {
 
     return {
         user,
-
+        admin,
         isLoading,
         registerUser,
         logout,

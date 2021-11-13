@@ -11,14 +11,12 @@ const Services = () => {
             .then(data => setProducts(data))
     }, [])
     return (
-        <Box sx={{ flexGrow: 1, mb: 5 }}>
-            <Typography>
-                this is service
-            </Typography>
-            <Container>
-                <Typography>
-                    hi
+        <Container sx={{ mx: 3, mt: 5 }} marginTop={10} marginBottom={10}>
+            <Box sx={{ flexGrow: 1, mb: 5 }}>
+                <Typography variant="h4" style={{ textDecoration: 'dotted' }}>
+                    OUR TOP SELLING PRODUCT
                 </Typography>
+
                 <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         products.map(product => <Grid item xs={4} sm={4} md={4} style={{ height: "500px" }}>
@@ -26,7 +24,7 @@ const Services = () => {
                                 <Box>
                                     <CardMedia
                                         component="img"
-                                        style={{ width: '100%', height: '50%', margin: '0 auto' }}
+                                        style={{ width: '100%', height: '40%', margin: '0 auto' }}
                                         image={product.image}
 
                                     />
@@ -56,9 +54,10 @@ const Services = () => {
                         </Grid>)
                     }
                 </Grid>
-            </Container>
-        </Box >
 
+            </Box >
+
+        </Container>
 
     );
 };

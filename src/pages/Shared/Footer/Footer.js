@@ -18,8 +18,8 @@ const Footer = () => {
     // const { socialIcon } = useStyle();
     return (
         <footer>
-            <Container style={{ backgroundColor: 'black', mb: 5 }}>
-                <Grid container spacing={3} marginTop={4} marginBottom={10}>
+            <Container style={{ backgroundColor: 'black', my: 5, mb: 5 }}>
+                <Grid container spacing={3} marginTop={10} marginBottom={10}>
                     <Grid item xs={12} sm={12} md={6} lg={3}>
                         <List sx={{ mt: 4 }}>
                             <ListItemText>Emergency Dental Care</ListItemText>
@@ -44,7 +44,7 @@ const Footer = () => {
                     <Grid item xs={12} sm={12} md={6} lg={3}>
                         <List>
                             <ListItemText sx={{ color: '#19D3AE', mb: 1 }}>Oral Health</ListItemText>
-                            <Box style={{ color: 'white' }}>
+                            {/* <Box style={{ color: 'white' }}>
                                 <ListItemText>Emergency Dental Care</ListItemText>
                                 <ListItemText>Check Up</ListItemText>
                                 <ListItemText>Treatment of Personal Diseases</ListItemText>
@@ -52,7 +52,7 @@ const Footer = () => {
                                 <ListItemText>Check Up</ListItemText>
                                 <ListItemText>Check Up</ListItemText>
                                 <ListItemText>Check Up</ListItemText>
-                            </Box>
+                            </Box> */}
                         </List>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={3}>

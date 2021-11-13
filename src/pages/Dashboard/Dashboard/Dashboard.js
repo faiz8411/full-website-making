@@ -26,11 +26,14 @@ import {
 import Admin from '../Admin/Admin';
 import Payment from '../Payment/Payment';
 import useAuth from '../../../hooks/useAuth';
+import ManageProducts from './ManageProducts/ManageProducts';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import Review from './Review/Review';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { user, logout } = useAuth()
+    const { user, logout, admin } = useAuth()
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -67,13 +70,24 @@ function Dashboard(props) {
             </List>
             <List>
 
-                <ListItem button sx={{ backgroundColor: 'green' }}>
+                {admin && <ListItem button sx={{ backgroundColor: 'green' }}>
                     <ListItemIcon>
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <ShoppingBasket sx={{ fontSize: 30, }} />
                     </ListItemIcon>
                     <Link to={`${url}/admin`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="ADMIN" /></Link>
-                </ListItem>
+                </ListItem>}
+
+            </List>
+            <List>
+
+                {admin && <ListItem button sx={{ backgroundColor: 'green' }}>
+                    <ListItemIcon>
+                        {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                        <ShoppingBasket sx={{ fontSize: 30, }} />
+                    </ListItemIcon>
+                    <Link to={`${url}/manageProduct`} style={{ textDecoration: 'none' }}> <ListItemText style={{ color: 'white' }} primary="ADD PRODUCTS" /></Link>
+                </ListItem>}
 
             </List>
             <List>
@@ -94,7 +108,7 @@ function Dashboard(props) {
                         {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                         <RateReviewOutlined sx={{ fontSize: 30, }} />
                     </ListItemIcon>
-                    <Link to="/review" style={{ textDecoration: 'none' }}><ListItemText style={{ color: 'white' }} primary="REVIEW" /></Link>
+                    <Link to={`${url}/review`} style={{ textDecoration: 'none' }}><ListItemText style={{ color: 'white' }} primary="REVIEW" /></Link>
                 </ListItem>
 
             </List>
@@ -183,11 +197,17 @@ function Dashboard(props) {
                     <Route exact path={path}>
                         <ManageOrders></ManageOrders>
                     </Route>
-                    <Route path={`${path}/admin`}>
+                    <AdminRoute path={`${path}/manageProduct`}>
+                        <ManageProducts></ManageProducts>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/admin`}>
                         <Admin></Admin>
-                    </Route>
+                    </AdminRoute>
                     <Route path={`${path}/payment`}>
                         <Payment></Payment>
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <Review></Review>
                     </Route>
                 </Switch>
 

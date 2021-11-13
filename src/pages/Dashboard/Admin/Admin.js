@@ -4,14 +4,14 @@ import useAuth from '../../../hooks/useAuth';
 
 const Admin = () => {
     const [email, setEmail] = useState('')
-    const [success, setSuccess] = useState(false)
-    const { token } = useAuth()
+    const [creatAdmin, setCreateAdmin] = useState(false)
+    // const { token } = useAuth()
     const handleOnBlur = e => {
         setEmail(e.target.value)
     }
     const handleAdminSubmit = e => {
         const user = { email }
-        fetch('http://localhost:5000/users/admin', {
+        fetch('http://localhost:5000/users', {
             method: 'PUT',
             headers: {
                 // 'authorization': `Bearer${token}`,
@@ -23,8 +23,8 @@ const Admin = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     console.log(data)
-                    setEmail('')
-                    setSuccess(true)
+                    // setEmail('')
+                    setCreateAdmin(true)
                 }
 
             })
@@ -45,7 +45,7 @@ const Admin = () => {
                     variant="standard" /> <br />
                 <Button type="submit" variant="contained">make admin</Button>
             </form>
-            {success && <Alert severity="success">admin created  successfully </Alert>}
+            {creatAdmin && <Alert severity="success">admin created  successfully </Alert>}
         </div>
     );
 };
