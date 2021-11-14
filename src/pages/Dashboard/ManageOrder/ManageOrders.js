@@ -10,17 +10,33 @@ import Typography from '@mui/material/Typography';
 
 
 import useAuth from '../../../hooks/useAuth';
+import { Button } from '@mui/material';
 
 
 const ManageOrders = () => {
     const { user } = useAuth()
     const [manageOrder, setManageOrder] = useState([])
+    const [control, setControl] = useState(false)
+
     useEffect(() => {
         const url = `https://stormy-wave-57583.herokuapp.com/myOrders?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setManageOrder(data))
     }, [user.email])
+    const handleDelete = (id) => {
+        alert('you want to delete')
+        fetch(`https://stormy-wave-57583.herokuapp.com/deleteOrder/${id}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.deletedCount) {
+                    setControl(!control);
+                }
+            });
+        console.log(id);
+    };
     return (
         <div>
             {/* <h2>manage orders:{manageOrder.length}</h2> */}
@@ -31,6 +47,7 @@ const ManageOrders = () => {
                             <TableCell style={{ backgroundColor: 'yellow', borderRadius: 10 }}>product Name</TableCell>
                             <TableCell align="right" style={{ backgroundColor: 'yellow', borderRadius: 10 }}>user email</TableCell>
                             <TableCell align="right" style={{ backgroundColor: 'yellow', borderRadius: 10 }}>price</TableCell>
+                            <TableCell align="right" style={{ backgroundColor: 'yellow', borderRadius: 10 }}>action</TableCell>
 
                         </TableRow>
                     </TableHead>
@@ -48,6 +65,7 @@ const ManageOrders = () => {
                                 <TableCell align="right">{user.email}</TableCell>
                                 <TableCell align="right">{pd.price}$</TableCell>
 
+                                <TableCell align="right"><Button onClick={() => handleDelete(pd._id)}>delete</Button></TableCell>
 
                             </TableRow>
                         ))}

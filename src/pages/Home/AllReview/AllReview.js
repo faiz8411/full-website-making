@@ -12,7 +12,7 @@ const AllReview = () => {
     }, [])
     return (
         <div>
-            <Container m={5} p={5} sx={{ mt: 5 }}>
+            <Container m={5} p={5} sx={{ mt: 5 }} marginTop={20} >
                 <Typography variant="h5" style={{ color: '#C70039', fontWeight: 600, textAlign: 'left' }}> CUSTOMERS REVIEW:</Typography>
                 <Grid container spacing={3}>
                     {

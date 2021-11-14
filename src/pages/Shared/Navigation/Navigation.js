@@ -86,6 +86,9 @@ const Navigation = () => {
                                         <Button color="inherit">Login</Button>
                                     </NavLink>
                                 }
+                                {user?.email &&
+                                    <Button type="text" color="inherit">welcome:{user.displayName}</Button>}
+
                             </Box>
                         </Typography>
                     </Toolbar>

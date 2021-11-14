@@ -16,6 +16,7 @@ import Purchase from './pages/Home/Home/Purchase/Purchase';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import Orders from './pages/Home/Orders/Orders';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
             </Route>
             <Route exact path="/registration">
               <Registration></Registration>
+            </Route>
+            <Route exact path="*">
+              <NotFound></NotFound>
             </Route>
           </Switch>
         </Router>

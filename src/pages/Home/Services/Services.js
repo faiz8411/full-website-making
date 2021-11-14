@@ -11,7 +11,7 @@ const Services = () => {
             .then(data => setProducts(data))
     }, [])
     return (
-        <Container sx={{ mx: 3, mt: 5 }} marginTop={10} marginBottom={10}>
+        <Container sx={{ mx: 3, mt: 5 }} marginTop={10} marginBottom={15}>
             <Box sx={{ flexGrow: 1, mb: 5 }} marginTop={10} marginBottom={10}>
                 <Typography variant="h4" style={{ color: '#900C3F ', fontWeight: 600, textAlign: 'left' }}>
                     OUR HOT SALE

@@ -17,6 +17,7 @@ const ManageProducts = () => {
     const { user } = useAuth()
     const [orders, setOrders] = useState([]);
     const { register, handleSubmit } = useForm();
+    const [control, setControl] = useState(false)
 
     const [status, setStatus] = useState("");
     const [orderId, setOrderId] = useState("");
@@ -32,6 +33,20 @@ const ManageProducts = () => {
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, []);
+
+    const handleDelete = (id) => {
+        alert('you want to delete')
+        fetch(`https://stormy-wave-57583.herokuapp.com/deleteOrder/${id}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.deletedCount) {
+                    setControl(!control);
+                }
+            });
+        console.log(id);
+    };
 
     const handleUpdate = (id) => {
         fetch(`https://stormy-wave-57583.herokuapp.com/updateStatus/${id}`, {
@@ -74,6 +89,7 @@ const ManageProducts = () => {
                                 <TableCell align="right"><TextField onChange={handleStatus} defaultValue={pd.status} variant="outlined" />
                                 </TableCell>
                                 <TableCell onClick={() => handleUpdate(pd._id)} align="right"><Button variant="text">update</Button></TableCell>
+                                <TableCell onClick={() => handleDelete(pd._id)} align="right"><Button variant="text">delete</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
