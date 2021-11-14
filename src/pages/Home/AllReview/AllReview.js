@@ -23,6 +23,8 @@ const AllReview = () => {
                                 <Typography style={{ fontWeight: 500, color: 'black', my: 2 }} variant="subtitle" sx={{ my: 2 }} >customer email:{pd.email} </Typography>
                                 <br />
                                 <Typography style={{ fontWeight: 500, fontSize: 13 }} variant="subtitle" sx={{ my: 2, color: 'gray' }} >customer review:{pd.review} </Typography>
+                                <br />
+                                <Typography style={{ fontWeight: 500, fontSize: 13 }} variant="subtitle" sx={{ my: 2, color: 'green' }} > Rating star:{pd.number} </Typography>
 
                             </Paper>
                         </Grid>)

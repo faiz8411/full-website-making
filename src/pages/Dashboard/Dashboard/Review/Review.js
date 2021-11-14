@@ -50,10 +50,12 @@ const Review = () => {
                 <Grid item xs={12} md={6}>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <br />
+
 
                         <br />
-                        <textarea {...register("review")} style={{ width: 400, height: 200 }} />
+                        <textarea {...register("review")} style={{ width: 400, height: 200 }} defaultValue="review write here" />
+                        <br />
+                        <textarea {...register("number")} style={{ width: 100, height: 20 }} placeholder="star number" />
                         <br />
                         <Button> <input type="submit" /></Button>
                     </form>
