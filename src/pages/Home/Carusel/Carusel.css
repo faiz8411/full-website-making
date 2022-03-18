@@ -1,0 +1,17 @@
+.center {
+  background: #fa0713;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.discount {
+  margin-left: 30px;
+  color: aliceblue;
+}
+
+.discount-div {
+  margin-left: 20px;
+}

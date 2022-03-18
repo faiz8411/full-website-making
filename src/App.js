@@ -1,31 +1,26 @@
-import './App.css';
+import "./App.css";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Home from './pages/Home/Home/Home';
-import AddService from './pages/AddService/AddService';
-import Login from './pages/Login/Login/Login';
-import AuthProvider from './contexts/AuthProvider/AuthProvider';
-import Registration from './pages/Login/Registration/Registration';
-import Products from './pages/Products/Products/Products';
-import Purchase from './pages/Home/Home/Purchase/Purchase';
-import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
-import Orders from './pages/Home/Orders/Orders';
-import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
-import NotFound from './pages/NotFound/NotFound';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./pages/Home/Home/Home";
+import AddService from "./pages/AddService/AddService";
+import Login from "./pages/Login/Login/Login";
+import AuthProvider from "./contexts/AuthProvider/AuthProvider";
+import Registration from "./pages/Login/Registration/Registration";
+import Products from "./pages/Products/Products/Products";
+import Purchase from "./pages/Home/Home/Purchase/Purchase";
+import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
+import Orders from "./pages/Home/Orders/Orders";
+import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import Table from "../src/pages/Table/Table";
+import NotFound from "./pages/NotFound/NotFound";
+import EditPages from "./pages/EditPages/EditPages";
 
 function App() {
   return (
     <div className="App">
-
       <AuthProvider>
         <Router>
           <Switch>
-
             <Route path="/home">
               <Home />
             </Route>
@@ -44,6 +39,12 @@ function App() {
             <Route exact path="/products">
               <Products></Products>
             </Route>
+            <Route exact path="/table">
+              <Table />
+            </Route>
+            <Route exact path="/user/:id">
+              <EditPages />
+            </Route>
             <PrivateRoute path="/purchase/:productId">
               <Purchase></Purchase>
             </PrivateRoute>
@@ -58,7 +59,6 @@ function App() {
             </Route>
           </Switch>
         </Router>
-
       </AuthProvider>
     </div>
   );
