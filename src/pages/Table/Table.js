@@ -21,7 +21,7 @@ import {
   TableRow,
   TextField,
 } from "@material-ui/core";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 export default function TransitionsModal() {
   const [open, setOpen] = React.useState(false);
@@ -39,7 +39,7 @@ export default function TransitionsModal() {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/addEmployee", {
+    fetch("https://stormy-wave-57583.herokuapp.com/addEmployee", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -61,7 +61,7 @@ export default function TransitionsModal() {
   };
 
   React.useEffect(() => {
-    fetch("http://localhost:5000/allEmployee")
+    fetch("https://stormy-wave-57583.herokuapp.com/allEmployee")
       .then((res) => res.json())
       .then((data) => setEmployees(data));
   }, [employees]);
@@ -80,7 +80,7 @@ export default function TransitionsModal() {
 
   const handleDelete = (id) => {
     alert("are you want to delete");
-    fetch(`http://localhost:5000/deleteId/${id}`, {
+    fetch(`https://stormy-wave-57583.herokuapp.com/deleteId/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -99,12 +99,9 @@ export default function TransitionsModal() {
 
   return (
     <>
-      <div className="tableDiv">
-        <Button
-          variant="contained"
-          onClick={handleOpen}
-          style={{ margin: "auto" }}
-        >
+      <div style={{ textAlign: "left", marginTop: "100px" }}>
+        <h3>our top employee</h3>
+        <Button variant="contained" onClick={handleOpen}>
           Add Employee
         </Button>
 
@@ -275,7 +272,9 @@ export default function TransitionsModal() {
                   <TableCell className="TableCellStyle">Email</TableCell>
                   <TableCell className="TableCellStyle">Mobile</TableCell>
                   <TableCell className="TableCellStyle">Address</TableCell>
-                  <TableCell className="action">action</TableCell>
+                  <TableCell style={{ textAlign: "right" }} className="action">
+                    action
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

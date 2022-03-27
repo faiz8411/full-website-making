@@ -40,7 +40,7 @@ const EditPages = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/singleEmployee/${id}`)
+    fetch(`https://stormy-wave-57583.herokuapp.com/singleEmployee/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setUpdate(data);
@@ -50,7 +50,7 @@ const EditPages = () => {
   const editUpdate = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/updateEmployee/${id}`, {
+    fetch(`https://stormy-wave-57583.herokuapp.com/updateEmployee/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
