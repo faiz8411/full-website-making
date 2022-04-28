@@ -98,7 +98,9 @@ function SwipeableTextMobileStepper() {
           <div>
             <img src={bannerBike} height="400px" alt="" />
           </div>
-          <Button variant="contained">click more</Button>
+          <Button className="gradient-button" variant="contained">
+            click more
+          </Button>
         </Grid>
         <Grid item={4}>
           <div className="discount-div">
@@ -109,7 +111,7 @@ function SwipeableTextMobileStepper() {
               </h2>
             </div>
           </div>
-          <Button className="button-second" variant="contained">
+          <Button className="gradient-button" variant="contained">
             click more
           </Button>
         </Grid>

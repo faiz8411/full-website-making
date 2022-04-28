@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { Col, Row } from "reactstrap";
-import { useParams } from "react-router-dom";
-
+import { useParams, useHistory } from "react-router-dom";
+import "./EditPages.css";
 import swal from "sweetalert";
 
 const EditPages = () => {
   const [update, setUpdate] = useState({});
-
+  const history = useHistory();
   const { id } = useParams();
 
   const editName = (e) => {
@@ -38,6 +38,9 @@ const EditPages = () => {
     updatePhone.phone = editphone;
     setUpdate(updatePhone);
   };
+  const cancelButton = () => {
+    history.push("/");
+  };
 
   useEffect(() => {
     fetch(`https://stormy-wave-57583.herokuapp.com/singleEmployee/${id}`)
@@ -67,94 +70,92 @@ const EditPages = () => {
           });
           setUpdate("");
         }
+        history.push("/");
       });
   };
   // console.log(id)
 
   return (
     <div>
-      <Box className="editBox">
-        <Row style={{ display: "flex" }}>
-          <Col>
-            {" "}
+      <div className="editBox">
+        <form onSubmit={editUpdate}>
+          <div style={{ border: "1px solid black" }}>
             <Typography className="editForm" variant="h6">
               Edit Form
             </Typography>
-          </Col>
-          <Col></Col>
-        </Row>
-        <form onSubmit={editUpdate}>
-          <TextField
-            className="textField"
-            sx={{ width: "90%", mb: 3 }}
-            id="outlined-size-small"
-            placeholder="Name"
-            required
-            size="small"
-            name="Name"
-            // label="name"
-            value={update && update.Name}
-            defaultValue={update && update.Name}
-            onChange={editName}
-          />
-          <br />
-          <TextField
-            className="textField"
-            sx={{ width: "90%", m: 1 }}
-            // label="position"
-            id="outlined-textarea"
-            placeholder="Position"
-            size="small"
-            name="Designation"
-            value={update && update.email}
-            defaultValue={update.email}
-            onChange={editEmail}
-          />
-          <br />
-          <TextField
-            classNam="textFiled"
-            sx={{ width: "90%", m: 1 }}
-            id="outlined-textarea"
-            placeholder="Age"
-            size="small"
-            name="age"
-            onChange={editPhone}
-            value={update && update.phone}
-            defaultValue={update.phone}
-          />
-          <br />
-          <TextField
-            classNam="textFiled"
-            sx={{ width: "90%", mt: 2 }}
-            id="outlined-textarea"
-            cmd
-            placeholder="Address"
-            size="large"
-            name="address"
-            // defaultValue={single?.Address}
-            defaultValue={update.address}
-            value={update && update.address}
-            onChange={editAddress}
-          />
+            <TextField
+              className="textField"
+              sx={{ width: "90%", mb: 3 }}
+              id="outlined-size-small"
+              placeholder="Name"
+              required
+              size="small"
+              name="Name"
+              // label="name"
+              value={update && update.Name}
+              defaultValue={update && update.Name}
+              onChange={editName}
+            />
+            <br />
+            <TextField
+              className="textField"
+              sx={{ width: "90%", m: 1 }}
+              // label="position"
+              id="outlined-textarea"
+              placeholder="Position"
+              size="small"
+              name="Designation"
+              value={update && update.email}
+              defaultValue={update.email}
+              onChange={editEmail}
+            />
+            <br />
+            <TextField
+              classNam="textFiled"
+              sx={{ width: "90%", m: 1 }}
+              id="outlined-textarea"
+              placeholder="Age"
+              size="small"
+              name="age"
+              onChange={editPhone}
+              value={update && update.phone}
+              defaultValue={update.phone}
+            />
+            <br />
+            <TextField
+              classNam="textFiled"
+              sx={{ width: "90%", mt: 2 }}
+              id="outlined-textarea"
+              cmd
+              placeholder="Address"
+              size="large"
+              name="address"
+              // defaultValue={single?.Address}
+              defaultValue={update.address}
+              value={update && update.address}
+              onChange={editAddress}
+            />
 
-          <br />
-          <Button
-            className="buttonUpdateStyle"
-            type="submit"
-            variant="contained"
-            color="success"
-          >
-            update
-          </Button>
-          <Button
-            className="buttonStyleCancel"
-            // onClick={cancelButton}
-            type="submit"
-          >
-            Cancel
-          </Button>
+            <br />
+            <button
+              className="updateButtonStyle"
+              type="submit"
+              variant="contained"
+              color="success"
+            >
+              update
+            </button>
+
+            <button
+              onClick={cancelButton}
+              className="buttonStyleCancel"
+              variant="contained"
+            >
+              cancel
+            </button>
+          </div>
         </form>
-      </Box>
+      </div>
     </div>
   );
 };

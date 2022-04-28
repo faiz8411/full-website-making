@@ -1,0 +1,41 @@
+.editForm {
+  text-align: center;
+  justify-content: center;
+}
+
+.updateButtonStyle{
+  outline: 0;
+  border: 0;
+  padding: 5px 5px;
+  background-color: #10b030;
+  color: #ffff;
+  font-size: 13px;
+  
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #0ea13d;
+  position: relative;
+  top: 0;
+}
+.updateButtonStyle :active{
+top: 5px;
+box-shadow: 0 2px 0 #f90909;
+}
+.buttonStyleCancel{
+  outline: 0;
+  border: 0;
+  padding: 5px 5px;
+  background-color: #b01010;
+  color: #ffff;
+  font-size: 13px;
+  
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #b01010;
+  position: relative;
+  top: 0;
+}
+.buttonStyleCancel:active{
+  top: 5px;
+  box-shadow: 0 2px 0 #f90909;
+}
